@@ -7,9 +7,7 @@ ClojureScript code is sent to the server and evaluate in a repl on the server si
 ## Usage
 ========
 
-http://tryclj.com
-
-If you want to run it, refer to https://github.com/Raynes/tryclojure/wiki/Running-Tryclojure
+http://k.timmc.org:7013/trycljs
 
 ## Credits
 ==========
