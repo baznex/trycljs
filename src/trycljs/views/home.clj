@@ -1,4 +1,4 @@
-(ns tryclojure.views.home
+(ns trycljs.views.home
   (:use [noir.core :only [defpartial defpage]]
         [hiccup form-helpers page-helpers]))
 
@@ -24,40 +24,36 @@
    "It'll be in an entirely new namespace/sandbox."]
   [:p.bottom
    "You can find the site's source and such on its "
-   (link-to "http://github.com/Raynes/tryclojure" "github")
+   (link-to "http://github.com/baznex/trycljs" "github")
    " page."]
   [:p.bottom
-   "TryClojure is written in Clojure and JavaScript (JQuery), powered by "
-   (link-to "https://github.com/flatland/clojail" "clojail")
-   " and Chris Done's "
+   "TryCljs is written in Clojure and JavaScript (JQuery), powered by Chris Done's "
    (link-to "https://github.com/chrisdone/jquery-console" "jquery-console")]
   [:p.bottom "Design by " (link-to "http://apgwoz.com" "Andrew Gwozdziewycz")])
 
 (defpartial home-html []
   [:p.bottom
-   "Welcome to Try Clojure. See that little box up there? That's a Clojure repl. You can type "
+   "Welcome to TryCljs. See that little box up there? That's a ClojureScript repl. You can type "
    "expressions and see their results right here in your browser. We also have a brief tutorial to "
-   "give you a taste of Clojure. Try it out by typing " [:code.expr "tutorial"] " in the console!"]
+   "give you a taste of ClojureScript. Try it out by typing " [:code.expr "tutorial"] " in the console!"]
   [:p.bottom
-   "Check out the site's source on "
-   (link-to "http://github.com/Raynes/tryclojure" "github")
-   "!"])
+   "Check out the site's source on " (link-to "http://github.com/baznex/trycljs" "github") "!"])
 
 (defpartial root-html []
   (html4
    [:head
-    (include-css "/resources/public/css/tryclojure.css")
+    (include-css "/resources/public/css/trycljs.css")
     (include-js "/resources/public/javascript/jquery-1.4.2.min.js"
                 "/resources/public/javascript/jquery.console.js"
-                "/resources/public/javascript/tryclojure.js")
-    [:title "Try Clojure"]]
+                "/resources/public/javascript/trycljs.js")
+    [:title "TryCljs"]]
    [:body
     [:div#wrapper
      [:div#content
       [:div#header
        [:h1
         [:span.logo-try "Try"] " "
-        [:span.logo-clojure "Clo" [:em "j"] "ure"]]]
+        [:span.logo-clojure "Cl" [:em "j"] "s"]]]
       [:div#container
        [:div#console.console]
        [:div#buttons
@@ -66,11 +62,8 @@
         [:a#about.buttons.last "about"]]
        [:div#changer (home-html)]]
       [:div.footer
-       [:p.bottom "©2011 Anthony Grimes and numerous contributors"]
-       [:p.bottom
-        "Built with "
-        (link-to "http://webnoir.org" "Noir")
-        "."]]]]]))
+       [:p.bottom "©2011 BAZNEX"]
+       [:p.bottom "Built with " (link-to "http://webnoir.org" "Noir") "."]]]]]))
 
 (defpage "/" []
   (root-html))

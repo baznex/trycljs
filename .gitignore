@@ -7,3 +7,4 @@ classes
 /resources/private/cljs-compiler/
 *.iml
 .idea
+.lein-deps-sum

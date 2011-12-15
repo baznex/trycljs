@@ -1,4 +1,4 @@
-(ns tryclojure.models.compile)
+(ns trycljs.models.compile)
 
 (defn compile-expr [cljs]
   cljs ;; for now, just echo

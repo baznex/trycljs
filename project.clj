@@ -8,6 +8,6 @@
   :jvm-opts ["-Djava.security.policy=example.policy""-Xmx80M"]
   :hooks [leiningen.fetch-js
           leiningen.fetch-cljs]
-  :main tryclojure.server)
+  :main trycljs.server)
 
 

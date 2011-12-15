@@ -1,9 +1,9 @@
-(ns tryclojure.server
+(ns trycljs.server
   (:use [ring.middleware.file :only [wrap-file]])
   (:require [noir.server :as server]))
 
 (server/add-middleware wrap-file (System/getProperty "user.dir"))
-(server/load-views "src/tryclojure/views")
+(server/load-views "src/trycljs/views")
 
 (defn to-port [s]
   (when-let [port s] (Long. port)))
