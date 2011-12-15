@@ -2,12 +2,15 @@
 =========
 
 TryCLJS is a online ClojureScript REPL, based off of TryClojure.
-ClojureScript code is sent to the server and evaluate in a repl on the server side.
+
+Here is how we intend to do it:
+
 
 ## Usage
 ========
 
-http://k.timmc.org:7013/trycljs
+http://k.timmc.org:7011/trycljs
+
 
 ## Credits
 ==========
