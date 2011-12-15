@@ -7,7 +7,8 @@
   ;; For lein and Heroku compatibility. If you're using cake, add
   ;; this line to .cake/config: jvm.opts = -Djava.security.policy=example.policy
   :jvm-opts ["-Djava.security.policy=example.policy""-Xmx80M"]
-  :hooks [leiningen.fetch-js]
+  :hooks [leiningen.fetch-js
+          leiningen.fetch-cljs]
   :main tryclojure.server)
 
 

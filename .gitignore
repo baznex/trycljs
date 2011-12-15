@@ -3,4 +3,5 @@ pom.xml
 lib
 classes
 *~
-resources/public/javascript/jquery*
+/resources/public/javascript/jquery*
+/resources/private/cljs-compiler/

@@ -15,7 +15,11 @@ Here is how we intend to do it:
 ## Usage
 ========
 
+For Linux and Mac users, `lein deps, run`
 
+Windows users will need to run the ClojureScript Windows setup instructions
+to place CLJS in resources/private/cljs-compiler.
+and run the Windows setup instructions.
 
 Eventually a public version will be here or so: http://k.timmc.org:7011/trycljs
 
