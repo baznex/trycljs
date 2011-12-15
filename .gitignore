@@ -5,3 +5,5 @@ classes
 *~
 /resources/public/javascript/jquery*
 /resources/private/cljs-compiler/
+*.iml
+.idea
