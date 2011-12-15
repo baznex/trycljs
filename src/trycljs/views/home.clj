@@ -62,7 +62,7 @@
         [:a#about.buttons.last "about"]]
        [:div#changer (home-html)]]
       [:div.footer
-       [:p.bottom "©2011 BAZNEX"]
+       [:p.bottom "©2011 " (link-to "http://baznex.herokuapp.com/" "B.A.Z.N.E.X.")]
        [:p.bottom "Built with " (link-to "http://webnoir.org" "Noir") "."]]]]]))
 
 (defpage "/" []
