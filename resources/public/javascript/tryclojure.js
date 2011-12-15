@@ -66,10 +66,10 @@ function getStep(n, controller) {
     $("#tuttext").load("tutorial", { step: n }, function() { setupExamples(controller); });
 }
 
-function eval_clojure(code) {
+function compile_cljs(code) {
     var data;
     $.ajax({
-        url: "eval.json",
+        url: "compile.json",
         data: { expr : code },
         async: false,
         success: function(res) { data = res; }
@@ -130,21 +130,34 @@ function onHandle(line, report) {
     // handle commands
     if (doCommand(input, report)) return;
 
-    // perform evaluation
-    var data = eval_clojure(input);
+    // perform compilation
+    var compiled = compile_cljs(input);
 
-    // handle error
-    if (data.error) {
-        return [{msg: data.message, className: "jquery-console-message-error"}];
+    // handle compilation error
+    if (compiled.error) {
+        return [{msg: "Compilation error: " + compiled.error,
+                className: "jquery-console-message-error"}];
+    }
+
+    // evaluate
+    var result;
+    try {
+        result = eval(compiled.js);
+    } catch (e) {
+        return [{msg: "Evaluation error: " + e,
+                className: "jquery-console-message-error"}];
     }
 
     // handle page
-    if (page && page.verify(data)) {
+    if (page && page.verify(input)) {
         showPage(pageNum + 1);
     }
 
+    // print output
+    var output = "" + result; // TODO: format back as cljs
+
     // display expr results
-    return [{msg: data.result, className: "jquery-console-message-value"}];
+    return [{msg: output, className: "jquery-console-message-value"}];
 }
 
 /**
