@@ -51,10 +51,11 @@ throw exception instead of returning."
   (and
    (make-sure (.exists ^File comp-base)
      (println "Downloading ClojureScript compiler's installer")
-     (and (sh-check "git" "clone" cljs-git (dpath comp-base))
-          (sh-check "git" "checkout"
-                    "d625dc2154ce8a06e9cc1c56f4b53dc811662062"
-                    :dir comp-base)))
+     (and
+      (sh-check "git" "clone" cljs-git (dpath comp-base))
+      (sh-check "git" "checkout"
+                "329708bdd0f039241b187bc639836d9997d8fbd4"
+                :dir comp-base)))
 
    (make-sure (.exists ^File gcls-base)
      (println "Bootstrapping ClojureScript compiler")
