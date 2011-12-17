@@ -64,7 +64,9 @@
         [:a#about.buttons.last "about"]]
        [:div#changer (home-html)]]
       [:div.footer
-       [:p.bottom "©2011 " (link-to "http://baznex.herokuapp.com/" "B.A.Z.N.E.X.")]
+       [:p.bottom "Created by some folks from "
+        (link-to "http://baznex.herokuapp.com/" "B.A.Z.N.E.X.") "."]
+       [:p.bottom "Original site that this was forked from: " (link-to "http://tryclj.com/" "TryClj")]
        [:p.bottom "Built with " (link-to "http://webnoir.org" "Noir") "."]]]]]))
 
 (defpage "/" []
