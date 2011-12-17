@@ -38,11 +38,8 @@ throw exception instead of returning."
 
 (def comp-base (io/file "resources" "private" "cljs-compiler"))
 (def gcls-base (io/file comp-base "closure"))
-(def gcls-lib (io/file gcls-base "library" "closure"))
 
-(def pub-cljs-js (io/file "resources" "public" "javascript" "cljs"))
-(def gcls-lib-tgt (io/file pub-cljs-js "closure"))
-(def gcls-copy-test (io/file gcls-lib-tgt "goog" "base.js"))
+(def cslib (io/file "resources" "public" "javascript" "cslib"))
 
 (defn ^String dpath
   "Return a directory's path, always ending in a slash."
@@ -53,29 +50,50 @@ throw exception instead of returning."
 (defn fetch-cljs [project]
   (and
    (make-sure (.exists ^File comp-base)
-     (println "Downloading ClojureScript compiler's installer.")
+     (println "Downloading ClojureScript compiler's installer")
      (and (sh-check "git" "clone" cljs-git (dpath comp-base))
           (sh-check "git" "checkout"
                     "d625dc2154ce8a06e9cc1c56f4b53dc811662062"
                     :dir comp-base)))
+
    (make-sure (.exists ^File gcls-base)
-     (println "Bootstrapping ClojureScript compiler...")
+     (println "Bootstrapping ClojureScript compiler")
      (sh-check "./script/bootstrap" :dir comp-base))
-   (make-sure (.exists ^File gcls-copy-test)
-     (println "Copying ClojureScript client libs into website")
-     (and
-      (sh-check "mkdir" "-p" (dpath gcls-lib-tgt))
-      (sh-check "rsync" "-a"
-                (dpath (io/file gcls-lib "css"))
-                (dpath (io/file gcls-lib-tgt "css")))
-      (sh-check "rsync" "-a"
-                (dpath (io/file gcls-lib "goog"))
-                (dpath (io/file gcls-lib-tgt "goog")))))))
+
+   (let [cljs-base (io/file cslib "closure") ;; GClosure insists...
+         cljs-load-dir (io/file cljs-base "main")
+         cljs-loader (io/file cljs-load-dir "load.js")]
+     (make-sure (.exists ^File cljs-loader)
+        (println "Building CLJS client library for website")
+        (sh-check "mkdir" "-p" (dpath cljs-load-dir))
+        (sh-check "bin/cljsc" (dpath (io/file comp-base "src" "cljs"))
+                  (str {:output-dir (dpath cljs-base)
+                        :output-to (.getAbsolutePath cljs-loader)})
+                  :dir comp-base)
+        (sh-check "rm" "-rf" "--" (dpath (io/file cljs-base "goog")))))
+
+   ;; Note: Compiling CLJS client lib brings along goog -- order is important
+
+   (let [gcls-lib (io/file gcls-base "library")
+         copy-test (io/file cslib "third_party" "closure" "goog" "deps.js")]
+     (make-sure (.exists ^File copy-test)
+       (println "Copying Google Closure libs into website")
+       (and
+        (sh-check "mkdir" "-p" (dpath (io/file cslib "closure")))
+        (sh-check "rsync" "-a"
+                  (dpath (io/file gcls-lib "closure" "css"))
+                  (dpath (io/file cslib "closure" "css")))
+        (sh-check "rsync" "-a"
+                  (dpath (io/file gcls-lib "closure" "goog"))
+                  (dpath (io/file cslib "closure" "goog")))
+        (sh-check "rsync" "-a"
+                  (dpath (io/file gcls-lib "third_party"))
+                  (dpath (io/file cslib "third_party"))))))))
 
 (defn clean-cljs [project]
   (sh-check "rm" "-rf" "--"
             (dpath comp-base)
-            (dpath pub-cljs-js)))
+            (dpath cslib)))
 
 (prepend-tasks #'deps fetch-cljs)
 (prepend-tasks #'clean clean-cljs)

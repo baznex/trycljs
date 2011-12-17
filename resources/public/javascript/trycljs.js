@@ -194,3 +194,5 @@ $(document).ready(function() {
 
     changerUpdated();
 });
+
+goog.require("cljs.core");
