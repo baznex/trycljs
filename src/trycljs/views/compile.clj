@@ -5,7 +5,7 @@
 
 (defpage "/compile.json" {:keys [expr jsonp]}
   (let [compiled (compile-request expr)
-        data (if (instance? Exception compiled)
+        data (if (instance? Throwable compiled)
                {:error (.getMessage compiled)}
                {:js compiled})]
     (if jsonp

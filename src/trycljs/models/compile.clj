@@ -24,4 +24,5 @@
   "Given a CLJS string, produce either a JS string or an Exception."
   (try
     (compile-expr expr)
-    (catch Exception e e)))
+    (catch Exception e e)
+    (catch AssertionError e e)))

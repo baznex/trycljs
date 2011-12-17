@@ -4,6 +4,7 @@ lib
 classes
 *~
 /resources/public/javascript/jquery*
+/resources/public/javascript/cljs/
 /resources/private/cljs-compiler/
 *.iml
 .idea

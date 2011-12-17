@@ -45,7 +45,8 @@
     (include-css "/resources/public/css/trycljs.css")
     (include-js "/resources/public/javascript/jquery-1.4.2.min.js"
                 "/resources/public/javascript/jquery.console.js"
-                "/resources/public/javascript/trycljs.js")
+                "/resources/public/javascript/trycljs.js"
+                "/resources/public/javascript/cljs/closure/goog/base.js")
     [:title "TryCljs"]]
    [:body
     [:div#wrapper
