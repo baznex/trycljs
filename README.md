@@ -1,7 +1,7 @@
 # trycljs
 =========
 
-TryCLJS is a online ClojureScript REPL, based off of TryClojure.
+TryClojureScript is a online ClojureScript REPL, based off of TryClojure.
 
 Here is how we intend to do it:
 
@@ -28,7 +28,7 @@ Eventually a public version will be here or so: http://k.timmc.org:7011/trycljs
 
 Raynes and apgwoz and so forth for the original site.
 
-BAZNEX group members for the CLJS-specific stuff.
+BAZNEX group members for the ClojureScript-specific stuff.
 
 ## License
 ==========

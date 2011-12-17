@@ -27,13 +27,13 @@
    (link-to "http://github.com/baznex/trycljs" "github")
    " page."]
   [:p.bottom
-   "TryCljs is written in Clojure and JavaScript (JQuery), powered by Chris Done's "
+   "TryClojureScript is written in Clojure and JavaScript (JQuery), powered by Chris Done's "
    (link-to "https://github.com/chrisdone/jquery-console" "jquery-console")]
   [:p.bottom "Design by " (link-to "http://apgwoz.com" "Andrew Gwozdziewycz")])
 
 (defpartial home-html []
   [:p.bottom
-   "Welcome to TryCljs. See that little box up there? That's a ClojureScript repl. You can type "
+   "Welcome to TryClojureScript. See that little box up there? That's a ClojureScript repl. You can type "
    "expressions and see their results right here in your browser. We also have a brief tutorial to "
    "give you a taste of ClojureScript. Try it out by typing " [:code.expr "tutorial"] " in the console!"]
   [:p.bottom
@@ -48,14 +48,14 @@
                 "/resources/public/javascript/cslib/closure/goog/base.js"
                 "/resources/public/javascript/cslib/closure/main/load.js"
                 "/resources/public/javascript/trycljs.js")
-    [:title "TryCljs"]]
+    [:title "TryClojureScript"]]
    [:body
     [:div#wrapper
      [:div#content
       [:div#header
        [:h1
         [:span.logo-try "Try"] " "
-        [:span.logo-clojure "Cl" [:em "j"] "s"]]]
+        [:span.logo-clojure "Clo" [:em "j"] "ureScript"]]]
       [:div#container
        [:div#console.console]
        [:div#buttons
