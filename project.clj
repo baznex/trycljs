@@ -3,6 +3,8 @@
   :dependencies [[org.clojure/clojure "1.3.0"]
                  [noir "1.2.1"]
 		 [commons-lang/commons-lang "2.5"]]
+  :extra-classpath-dirs ["resources/private/cljs-compiler/src/clj/"
+                         "resources/private/cljs-compiler/src/cljs/"]
   ;; For lein and Heroku compatibility. If you're using cake, add
   ;; this line to .cake/config: jvm.opts = -Djava.security.policy=example.policy
   :jvm-opts ["-Djava.security.policy=example.policy""-Xmx80M"]
