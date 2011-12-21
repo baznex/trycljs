@@ -195,4 +195,5 @@ $(document).ready(function() {
     changerUpdated();
 });
 
-goog.require("cljs.core");
+goog.provide('cljs.user'); // open evaluation namespace
+goog.require('cljs.core');
