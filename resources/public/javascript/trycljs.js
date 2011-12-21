@@ -195,5 +195,7 @@ $(document).ready(function() {
     changerUpdated();
 });
 
-goog.provide('cljs.user'); // open evaluation namespace
 goog.require('cljs.core');
+
+// Open eval namepace as last one, since GClosure will throw a fit otherwise
+goog.provide('cljs.user');
