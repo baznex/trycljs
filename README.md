@@ -1,6 +1,8 @@
 # trycljs
 =========
 
+**Abandoned**. You should check out https://github.com/fogus/himera instead!
+
 TryClojureScript is a online ClojureScript REPL, based off of TryClojure.
 
 Here is how we intend to do it:
